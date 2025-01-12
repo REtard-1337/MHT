@@ -1,0 +1,7 @@
+model:
+  embedding_size: 768
+  contextual_hidden_size: 768
+  hidden_size: 256
+  num_classes: 3
+  batch_size: 32
+  epochs: 10
