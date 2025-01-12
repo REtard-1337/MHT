@@ -30,7 +30,7 @@ To install the Multilingual Hypergraph Transformer, follow these steps:
 1. Clone the repository:
 
 ```
-   git clone https://github.com/REtatrd-1337/MHT.git
+   git clone https://github.com/REtard-1337/MHT.git
    cd MHT
 ```
 
@@ -66,10 +66,9 @@ tokenized_texts = model.tokenize(["Hello, world!", "Bonjour le monde!"])
 ### Training
 You can train the model using the train_model method:
 
-Python
-
-
+```Python
 model.train_model(training_data, target_data)
+```
 
 ### Prediction
 Make predictions using the predict method:
@@ -110,6 +109,6 @@ If you wish to cite this project in your academic work, please use the following
     title = {Multilingual Hypergraph Transformer},
     author = {REtard},
     year = {2025},
-    note = {Available at: https://github.com/REtatrd-1337/MHT}
+    note = {Available at: https://github.com/REtard-1337/MHT}
 }
 ```
