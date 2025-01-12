@@ -99,7 +99,7 @@ This project is licensed under the MIT License. See the LICENSE file for more in
 Contributions to enhance the model and its capabilities are welcome! Please open an issue or submit a pull request with your suggestions.
 
 ## Contact
-For any questions or issues, contact me at: [Telegram](t.me/user_with_username)
+For any questions or issues, contact me at telegram: t.me/user_with_username
 
 ## BibTeX Entry
 If you wish to cite this project in your academic work, please use the following BibTeX entry:
