@@ -19,7 +19,6 @@ The Multilingual Hypergraph Transformer is an advanced deep learning model desig
   - [Prediction](#prediction)
 - [Configuration](#configuration)
 - [Datasets](#datasets)
-- [Requirements](#requirements)
 - [License](#license)
 - [Contributing](#contributing)
 - [Contact](#contact)
@@ -93,7 +92,7 @@ epochs: 10
 The project utilizes a dataset located in dataset/dataset.csv. Feel free to add your own datasets in this directory.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more information.
+This project is licensed under the MIT License.
 
 ## Contributing
 Contributions to enhance the model and its capabilities are welcome! Please open an issue or submit a pull request with your suggestions.
