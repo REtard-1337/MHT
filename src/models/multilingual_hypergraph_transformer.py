@@ -9,12 +9,17 @@ from .gcn import GCNLayer
 from .attention import MultiFacetedAttention
 import src.config as config
 
+
 class MultilingualHypergraphTransformer(nn.Module):
     def __init__(self):
         super(MultilingualHypergraphTransformer, self).__init__()
         self.embedding_layer = EmbeddingLayer()
-        self.contextual_rnn = ContextualRNN(input_dim=config.EMBEDDING_SIZE, hidden_dim=config.CONTEXTUAL_HIDDEN_SIZE)
-        self.gcn_layer = GCNLayer(in_channels=config.EMBEDDING_SIZE, out_channels=config.HIDDEN_SIZE)
+        self.contextual_rnn = ContextualRNN(
+            input_dim=config.EMBEDDING_SIZE, hidden_dim=config.CONTEXTUAL_HIDDEN_SIZE
+        )
+        self.gcn_layer = GCNLayer(
+            in_channels=config.EMBEDDING_SIZE, out_channels=config.HIDDEN_SIZE
+        )
         self.attention_layer = MultiFacetedAttention(hidden_size=config.EMBEDDING_SIZE)
         self.classifier = nn.Linear(config.HIDDEN_SIZE, config.NUM_CLASSES)
 
@@ -33,16 +38,19 @@ class MultilingualHypergraphTransformer(nn.Module):
         attention_output = self.attention_layer(contextual_embeddings)
 
         num_nodes = attention_output.size(1)
-        edge_index = torch.tensor(
-            [[i, j] for i in range(num_nodes)
-            for j in range(num_nodes) if i != j],
-            dtype=torch.long
-        ).t().contiguous()
+        edge_index = (
+            torch.tensor(
+                [[i, j] for i in range(num_nodes) for j in range(num_nodes) if i != j],
+                dtype=torch.long,
+            )
+            .t()
+            .contiguous()
+        )
 
         hypergraph_data = Data(x=attention_output, edge_index=edge_index)
         output = self.gcn_layer(hypergraph_data.x, hypergraph_data.edge_index)
 
-        return self.classifier(output.mean(dim=1))  
+        return self.classifier(output.mean(dim=1))
 
     def train_model(self, training_data, target_data):
         self.train()
@@ -59,7 +67,9 @@ class MultilingualHypergraphTransformer(nn.Module):
             correct = (predicted == target_data).sum().item()
             accuracy = correct / target_data.size(0)
 
-            print(f'Epoch: {epoch + 1}, Loss: {loss.item():.4f}, Accuracy: {accuracy * 100:.2f}%')
+            print(
+                f"Epoch: {epoch + 1}, Loss: {loss.item():.4f}, Accuracy: {accuracy * 100:.2f}%"
+            )
 
     def predict(self, texts):
         self.eval()
